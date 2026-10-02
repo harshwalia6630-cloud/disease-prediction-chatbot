@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Symptom Checker · Disease Prediction Chatbot</title>
+<meta name="description" content="An NLP chatbot that predicts likely diseases from symptoms described in plain English. TF-IDF + calibrated LinearSVC, running entirely in your browser.">
+<meta property="og:title" content="Disease Prediction Chatbot">
+<meta property="og:description" content="Describe your symptoms in plain English and get likely conditions — an NLP model running entirely in your browser.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%232563eb'/><path d='M13 8h6v5h5v6h-5v5h-6v-5H8v-6h5z' fill='white'/></svg>">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top"><span class="logo" aria-hidden="true"></span>Symptom Checker</a>
+    <nav>
+      <a href="#how">How it works</a>
+      <a href="#results">Results</a>
+      <a class="gh" href="https://github.com/harshwalia6630-cloud/disease-prediction-chatbot" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero wrap">
+    <p class="eyebrow">NLP · TF-IDF · LinearSVC</p>
+    <h1>Describe your symptoms.<br>Get likely conditions in milliseconds.</h1>
+    <p class="lede">A disease-prediction chatbot trained on 6,120 symptom–disease records across 41 conditions.
+      It understands everyday language, handles negation ("no fever") and asks follow-up questions when it is unsure.
+      The model runs <strong>entirely in your browser</strong>, so nothing you type leaves your device.</p>
+    <ul class="stats" id="stats">
+      <li><b>98.8%</b><span>test accuracy</span></li>
+      <li><b>41</b><span>diseases</span></li>
+      <li><b id="stat-latency">~2 ms</b><span>per prediction</span></li>
+      <li><b>0</b><span>servers involved</span></li>
+    </ul>
+  </section>
+
+  <section class="app wrap" aria-label="Chatbot">
+    <div class="chat card">
+      <div class="chat-head">
+        <div>
+          <h2>Chat</h2>
+          <p class="muted" id="status">Loading model…</p>
+        </div>
+        <button class="ghost" id="reset" type="button" disabled>Start over</button>
+      </div>
+      <div id="log" class="log" aria-live="polite"></div>
+      <div class="chips" id="chips"></div>
+      <form id="form" class="composer">
+        <input id="input" autocomplete="off" placeholder="e.g. I've had a fever, chills and body aches for 3 days" aria-label="Describe your symptoms" disabled>
+        <button id="send" class="primary" disabled>Send</button>
+      </form>
+    </div>
+
+    <aside class="panel card" aria-label="Live analysis">
+      <h2>Live analysis</h2>
+      <p class="muted small">Updates as you chat.</p>
+      <h3>Top predictions</h3>
+      <div id="preds" class="preds"><p class="muted small">No prediction yet.</p></div>
+      <h3>Symptoms understood</h3>
+      <div id="tags" class="tags"><p class="muted small">Nothing detected yet.</p></div>
+      <h3>Last inference</h3>
+      <p class="mono" id="timing">–</p>
+      <p class="note">Educational project, not a medical device. Always consult a doctor about your health.</p>
+    </aside>
+  </section>
+
+  <section id="how" class="wrap section">
+    <h2 class="section-title">How it works</h2>
+    <ol class="steps">
+      <li class="card"><span class="num">1</span><h3>Normalise symptoms</h3>
+        <p>About 220 lay phrases map to 131 medical symptom terms: "throwing up" becomes <em>vomiting</em> and "tummy ache" becomes <em>stomach pain</em>. "No fever" is marked as negated.</p></li>
+      <li class="card"><span class="num">2</span><h3>Vectorise</h3>
+        <p>Porter-stemmed tokens become TF-IDF features: 7,427 word uni/bi-grams and 8,604 character n-grams, with sublinear term frequency.</p></li>
+      <li class="card"><span class="num">3</span><h3>Classify</h3>
+        <p>A LinearSVC with sigmoid calibration turns the features into a probability for each of the 41 diseases.</p></li>
+      <li class="card"><span class="num">4</span><h3>Ask, then answer</h3>
+        <p>Below 90% confidence, the bot asks about the symptom that best separates the top candidates. Each answer updates the probabilities with Bayes' rule.</p></li>
+    </ol>
+  </section>
+
+  <section id="results" class="wrap section">
+    <h2 class="section-title">Results</h2>
+    <div class="grid-2">
+      <div class="card">
+        <h3>Held-out test set (337 messages)</h3>
+        <table>
+          <thead><tr><th>Test set</th><th>Accuracy</th></tr></thead>
+          <tbody>
+            <tr><td>All messages</td><td><b>98.8%</b></td></tr>
+            <tr><td>Natural-language descriptions</td><td>97.7%</td></tr>
+            <tr><td>Unseen symptom combinations</td><td>100%</td></tr>
+            <tr><td>Unseen lay phrasing</td><td>100%</td></tr>
+          </tbody>
+        </table>
+        <p class="muted small">5-fold cross-validation on natural language: 97.5% ± 0.3%. Structured and lay-language sentences are template-generated, so the natural-language score is the most realistic number.</p>
+      </div>
+      <div class="card">
+        <h3>Engineering highlights</h3>
+        <ul class="ticks">
+          <li><b>64% lower latency</b> than the first version (5.19 → 1.89 ms per message) at the same accuracy, from pruned features and a single calibrated model</li>
+          <li><b>Follow-up questions</b> raise top-1 accuracy from 71.7% to 86.8% when users mention only two symptoms</li>
+          <li><b>No data leakage:</b> 4,616 duplicate rows removed before splitting</li>
+          <li><b>Browser port verified</b> against the Python model: identical outputs on 344 texts and 13 full conversations</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap footer">
+  <p>Built by Harshvardhan Singh Ahluwalia · Python, scikit-learn, NLTK, FastAPI · <a href="https://github.com/harshwalia6630-cloud/disease-prediction-chatbot" target="_blank" rel="noopener">Source code</a></p>
+  <p class="muted small">This tool gives educational suggestions only and is not a medical diagnosis.</p>
+</footer>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>

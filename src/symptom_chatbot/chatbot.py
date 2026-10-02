@@ -126,7 +126,8 @@ class DiseaseChatbot:
         weights = np.array([p for _, p in cands])
         weights = weights / weights.sum()
         best, best_score = None, 0.0
-        for symptom in {s for d, _ in cands for s in self.profiles[d]} - known:
+        # sorted so ties are broken the same way on every run (set order is hash-randomised)
+        for symptom in sorted({s for d, _ in cands for s in self.profiles[d]} - known):
             freq = np.array([self.profiles[d].get(symptom, 0.0) for d, _ in cands])
             mean = (weights * freq).sum()
             score = (weights * (freq - mean) ** 2).sum()  # weighted variance: high = discriminative

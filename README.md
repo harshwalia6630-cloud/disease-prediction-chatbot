@@ -1,6 +1,6 @@
 # Disease Prediction Chatbot
 
-An NLP chatbot that predicts likely diseases from symptoms described in plain English. It normalises everyday phrases ("throwing up", "tummy ache", "can't breathe") to medical symptom terms, classifies the text with TF-IDF and a calibrated LinearSVC, and asks follow-up questions when it is unsure. It runs as a FastAPI service with a web chat UI and ships with a Dockerfile.
+An NLP chatbot that predicts likely diseases from symptoms described in plain English. **[Live demo →](#website-vercel)** runs entirely in your browser. It normalises everyday phrases ("throwing up", "tummy ache", "can't breathe") to medical symptom terms, classifies the text with TF-IDF and a calibrated LinearSVC, and asks follow-up questions when it is unsure. It runs as a FastAPI service with a web chat UI and ships with a Dockerfile.
 
 **Tech stack:** Python · scikit-learn · NLTK · FastAPI · Docker
 
@@ -20,7 +20,7 @@ Test split: 337 held-out messages across **41 disease categories**. Model and th
 - **Stable on unseen inputs:** 5-fold cross-validation on the natural-language descriptions gives **97.5% ± 0.3%**.
 - **Faster responses (64% lower latency):** mean per-message inference fell from **5.19 ms to 1.89 ms** (p95 from 5.81 to 2.46 ms) with no change in test accuracy. Two optimisations did this. First, rare n-grams were pruned with `min_df=2`, cutting features from 23,347 to 16,031. Second, the 5-model calibration ensemble was replaced with a single calibrated LinearSVC. See [`reports/latency.json`](reports/latency.json).
 - **Symptom normalisation matters for real users:** on the lay-language set, accuracy is 100% with normalisation and 95.1% without it (validation split).
-- **Follow-up questions help:** a simulated patient mentions only 2 of their symptoms, then answers the bot's yes/no questions truthfully. Top-1 accuracy rises from **71.7% to 85.9%**, with 1.25 questions per conversation on average. This was run on 205 held-out dialogues ([`reports/dialogue_simulation.json`](reports/dialogue_simulation.json)).
+- **Follow-up questions help:** a simulated patient mentions only 2 of their symptoms, then answers the bot's yes/no questions truthfully. Top-1 accuracy rises from **71.7% to 86.8%**, with 1.33 questions per conversation on average. This was run on 205 held-out dialogues ([`reports/dialogue_simulation.json`](reports/dialogue_simulation.json)).
 
 ### Model comparison (validation split)
 
@@ -97,6 +97,20 @@ curl -X POST localhost:8000/api/predict -H "Content-Type: application/json" \
 | `DELETE /api/chat/{id}` | end a session |
 | `GET /health` | liveness check |
 
+### Website (Vercel)
+
+`web/` is a static website that runs the same model **entirely in the browser**, with no server. [`scripts/export_web_model.py`](scripts/export_web_model.py) exports the trained pipeline's vocabularies, IDF weights, SVM coefficients and calibration parameters (about 3 MB). The JavaScript port in [`web/js/`](web/js) reimplements the full pipeline: symptom normalisation, NLTK's Porter stemmer, word and char_wb TF-IDF, LinearSVC, sigmoid calibration and the dialogue manager. In the browser a prediction takes under 1 ms.
+
+The port is verified against Python by [`tests/web_parity.mjs`](tests/web_parity.mjs). It checks 1,649 stems, 344 texts (max probability difference 6e-8, identical top-1) and 13 full conversations.
+
+```bash
+python scripts/export_web_model.py   # after retraining
+node tests/web_parity.mjs            # parity check
+python -m http.server 8100 --directory web
+```
+
+**Deploy:** import the GitHub repo in Vercel, set **Root Directory** to `web`, leave Framework Preset as *Other* with no build command, and click Deploy.
+
 ### Docker / cloud deployment
 
 ```bash
@@ -114,11 +128,13 @@ python scripts/train.py                # model comparison, ablations, final mode
 python scripts/benchmark_latency.py    # baseline vs. optimised response time
 python scripts/simulate_dialogue.py    # follow-up question evaluation
 python -m pytest tests                 # 14 tests: preprocessing, model, dialogue, API
+node tests/web_parity.mjs              # browser port matches Python exactly
 ```
 
 ## Project structure
 
 ```
+├── web/                         # static website: model runs in the browser (Vercel)
 ├── app/
 │   ├── main.py                  # FastAPI service
 │   └── static/index.html        # chat UI

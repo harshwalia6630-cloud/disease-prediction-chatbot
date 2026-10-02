@@ -8,46 +8,46 @@
       "top1_before_questions": 0.7756,
       "top1_after_questions": 0.8,
       "top3_before_questions": 0.9024,
-      "top3_after_questions": 0.9171
+      "top3_after_questions": 0.9122
     },
     "0.6": {
       "dialogues": 205,
       "avg_follow_up_questions": 0.31,
       "top1_before_questions": 0.7756,
-      "top1_after_questions": 0.8341,
+      "top1_after_questions": 0.8293,
       "top3_before_questions": 0.9024,
-      "top3_after_questions": 0.9317
+      "top3_after_questions": 0.9171
     },
     "0.7": {
       "dialogues": 205,
-      "avg_follow_up_questions": 0.49,
+      "avg_follow_up_questions": 0.47,
       "top1_before_questions": 0.7756,
-      "top1_after_questions": 0.8439,
+      "top1_after_questions": 0.8537,
       "top3_before_questions": 0.9024,
-      "top3_after_questions": 0.9415
+      "top3_after_questions": 0.922
     },
     "0.8": {
       "dialogues": 205,
-      "avg_follow_up_questions": 0.64,
+      "avg_follow_up_questions": 0.61,
       "top1_before_questions": 0.7756,
       "top1_after_questions": 0.8683,
       "top3_before_questions": 0.9024,
-      "top3_after_questions": 0.9463
+      "top3_after_questions": 0.9268
     },
     "0.9": {
       "dialogues": 205,
-      "avg_follow_up_questions": 1.04,
+      "avg_follow_up_questions": 0.99,
       "top1_before_questions": 0.7756,
       "top1_after_questions": 0.8829,
       "top3_before_questions": 0.9024,
-      "top3_after_questions": 0.961
+      "top3_after_questions": 0.9415
     }
   },
   "test": {
     "dialogues": 205,
-    "avg_follow_up_questions": 1.25,
+    "avg_follow_up_questions": 1.33,
     "top1_before_questions": 0.7171,
-    "top1_after_questions": 0.8585,
+    "top1_after_questions": 0.8683,
     "top3_before_questions": 0.9073,
     "top3_after_questions": 0.922
   }
