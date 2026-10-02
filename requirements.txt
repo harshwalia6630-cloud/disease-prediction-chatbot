@@ -1,0 +1,9 @@
+# runtime (also used by the Docker image)
+scikit-learn==1.7.2      # must match the version the bundled model was trained with
+numpy==2.2.6
+pandas==2.3.3
+joblib==1.6.0
+nltk==3.10.3
+fastapi==0.142.2
+uvicorn[standard]==0.54.0
+pydantic==2.13.5

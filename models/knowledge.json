@@ -1,0 +1,637 @@
+{
+ "profiles": {
+  "Fungal Infection": {
+   "discolored patches": 0.9,
+   "itching": 0.9,
+   "nodal skin eruptions": 0.9,
+   "skin rash": 0.9
+  },
+  "Allergy": {
+   "chills": 0.9,
+   "continuous sneezing": 0.9,
+   "shivering": 0.9,
+   "watering from eyes": 0.9
+  },
+  "GERD": {
+   "chest pain": 0.95,
+   "cough": 0.95,
+   "stomach pain": 0.95,
+   "acidity": 0.9,
+   "ulcers on tongue": 0.9,
+   "vomiting": 0.9
+  },
+  "Chronic Cholestasis": {
+   "abdominal pain": 0.95,
+   "itching": 0.95,
+   "loss of appetite": 0.95,
+   "nausea": 0.95,
+   "vomiting": 0.95,
+   "yellowing of eyes": 0.95,
+   "yellowish skin": 0.95
+  },
+  "Drug Reaction": {
+   "itching": 0.95,
+   "burning urination": 0.9,
+   "skin rash": 0.9,
+   "spotting urination": 0.9,
+   "stomach pain": 0.9
+  },
+  "Peptic Ulcer Disease": {
+   "abdominal pain": 0.95,
+   "internal itching": 0.95,
+   "passage of gases": 0.95,
+   "vomiting": 0.95,
+   "loss of appetite": 0.9,
+   "indigestion": 0.9
+  },
+  "AIDS": {
+   "high fever": 0.95,
+   "extra marital contacts": 0.9,
+   "muscle wasting": 0.9,
+   "patches in throat": 0.9
+  },
+  "Diabetes": {
+   "increased appetite": 1.0,
+   "polyuria": 1.0,
+   "blurred and distorted vision": 0.95,
+   "excessive hunger": 0.95,
+   "fatigue": 0.95,
+   "irregular sugar level": 0.95,
+   "lethargy": 0.95,
+   "obesity": 0.95,
+   "restlessness": 0.95,
+   "weight loss": 0.95
+  },
+  "Gastroenteritis": {
+   "diarrhea": 0.95,
+   "dehydration": 0.9,
+   "sunken eyes": 0.9,
+   "vomiting": 0.9
+  },
+  "Bronchial Asthma": {
+   "breathlessness": 0.95,
+   "family history": 0.95,
+   "high fever": 0.95,
+   "mucoid sputum": 0.95,
+   "cough": 0.9,
+   "fatigue": 0.9
+  },
+  "Hypertension": {
+   "lack of concentration": 0.95,
+   "loss of balance": 0.95,
+   "chest pain": 0.9,
+   "dizziness": 0.9,
+   "headache": 0.9
+  },
+  "Migraine": {
+   "acidity": 0.95,
+   "blurred and distorted vision": 0.95,
+   "depression": 0.95,
+   "excessive hunger": 0.95,
+   "headache": 0.95,
+   "indigestion": 0.95,
+   "irritability": 0.95,
+   "stiff neck": 0.95,
+   "visual disturbances": 0.95
+  },
+  "Cervical Spondylosis": {
+   "dizziness": 0.95,
+   "loss of balance": 0.95,
+   "neck pain": 0.95,
+   "back pain": 0.9,
+   "weakness in limbs": 0.9
+  },
+  "Paralysis (Brain Hemorrhage)": {
+   "altered sensorium": 0.95,
+   "headache": 0.9,
+   "vomiting": 0.9,
+   "weakness of one body side": 0.9
+  },
+  "Jaundice": {
+   "abdominal pain": 0.95,
+   "dark urine": 0.95,
+   "fatigue": 0.95,
+   "high fever": 0.95,
+   "itching": 0.95,
+   "vomiting": 0.95,
+   "weight loss": 0.95,
+   "yellowish skin": 0.95
+  },
+  "Malaria": {
+   "muscle pain": 1.0,
+   "chills": 0.95,
+   "headache": 0.95,
+   "high fever": 0.95,
+   "nausea": 0.95,
+   "sweating": 0.95,
+   "vomiting": 0.95,
+   "diarrhea": 0.9
+  },
+  "Chickenpox": {
+   "malaise": 1.0,
+   "red spots over body": 1.0,
+   "fatigue": 0.95,
+   "headache": 0.95,
+   "high fever": 0.95,
+   "itching": 0.95,
+   "lethargy": 0.95,
+   "loss of appetite": 0.95,
+   "mild fever": 0.95,
+   "skin rash": 0.95,
+   "swelled lymph nodes": 0.95
+  },
+  "Dengue": {
+   "back pain": 1.0,
+   "headache": 1.0,
+   "loss of appetite": 1.0,
+   "nausea": 1.0,
+   "pain behind the eyes": 1.0,
+   "chills": 0.95,
+   "fatigue": 0.95,
+   "high fever": 0.95,
+   "joint pain": 0.95,
+   "muscle pain": 0.95,
+   "red spots over body": 0.95,
+   "skin rash": 0.95,
+   "vomiting": 0.95,
+   "malaise": 0.95
+  },
+  "Typhoid": {
+   "chills": 1.0,
+   "fatigue": 1.0,
+   "high fever": 1.0,
+   "abdominal pain": 0.95,
+   "belly pain": 0.95,
+   "constipation": 0.95,
+   "diarrhea": 0.95,
+   "nausea": 0.95,
+   "toxic look": 0.95,
+   "vomiting": 0.95,
+   "headache": 0.95
+  },
+  "Hepatitis A": {
+   "mild fever": 1.0,
+   "muscle pain": 1.0,
+   "yellowing of eyes": 1.0,
+   "abdominal pain": 0.95,
+   "dark urine": 0.95,
+   "diarrhea": 0.95,
+   "joint pain": 0.95,
+   "loss of appetite": 0.95,
+   "nausea": 0.95,
+   "vomiting": 0.95,
+   "yellowish skin": 0.95
+  },
+  "Hepatitis B": {
+   "malaise": 1.0,
+   "receiving blood transfusion": 1.0,
+   "receiving unsterile injections": 1.0,
+   "yellowing of eyes": 1.0,
+   "abdominal pain": 0.95,
+   "dark urine": 0.95,
+   "fatigue": 0.95,
+   "itching": 0.95,
+   "lethargy": 0.95,
+   "loss of appetite": 0.95,
+   "yellow urine": 0.95,
+   "yellowish skin": 0.95
+  },
+  "Hepatitis C": {
+   "family history": 0.95,
+   "fatigue": 0.95,
+   "loss of appetite": 0.95,
+   "nausea": 0.95,
+   "yellowish skin": 0.95,
+   "yellowing of eyes": 0.9
+  },
+  "Hepatitis D": {
+   "abdominal pain": 0.95,
+   "dark urine": 0.95,
+   "fatigue": 0.95,
+   "joint pain": 0.95,
+   "loss of appetite": 0.95,
+   "nausea": 0.95,
+   "vomiting": 0.95,
+   "yellowing of eyes": 0.95,
+   "yellowish skin": 0.95
+  },
+  "Hepatitis E": {
+   "abdominal pain": 1.0,
+   "coma": 1.0,
+   "loss of appetite": 1.0,
+   "stomach bleeding": 1.0,
+   "yellowing of eyes": 1.0,
+   "dark urine": 0.95,
+   "fatigue": 0.95,
+   "high fever": 0.95,
+   "joint pain": 0.95,
+   "nausea": 0.95,
+   "vomiting": 0.95,
+   "yellowish skin": 0.95,
+   "acute liver failure": 0.95
+  },
+  "Alcoholic Hepatitis": {
+   "abdominal pain": 0.95,
+   "distention of abdomen": 0.95,
+   "fluid overload": 0.95,
+   "history of alcohol consumption": 0.95,
+   "swelling of stomach": 0.95,
+   "vomiting": 0.95,
+   "yellowish skin": 0.95
+  },
+  "Tuberculosis": {
+   "blood in sputum": 1.0,
+   "chest pain": 1.0,
+   "loss of appetite": 1.0,
+   "malaise": 1.0,
+   "mild fever": 1.0,
+   "phlegm": 1.0,
+   "swelled lymph nodes": 1.0,
+   "yellowing of eyes": 1.0,
+   "breathlessness": 0.95,
+   "chills": 0.95,
+   "cough": 0.95,
+   "fatigue": 0.95,
+   "high fever": 0.95,
+   "sweating": 0.95,
+   "vomiting": 0.95,
+   "weight loss": 0.95
+  },
+  "Common Cold": {
+   "chest pain": 1.0,
+   "congestion": 1.0,
+   "loss of smell": 1.0,
+   "muscle pain": 1.0,
+   "phlegm": 1.0,
+   "redness of eyes": 1.0,
+   "runny nose": 1.0,
+   "sinus pressure": 1.0,
+   "throat irritation": 1.0,
+   "chills": 0.95,
+   "continuous sneezing": 0.95,
+   "cough": 0.95,
+   "fatigue": 0.95,
+   "headache": 0.95,
+   "high fever": 0.95,
+   "malaise": 0.95,
+   "swelled lymph nodes": 0.95
+  },
+  "Pneumonia": {
+   "chest pain": 1.0,
+   "fast heart rate": 1.0,
+   "rusty sputum": 1.0,
+   "breathlessness": 0.95,
+   "chills": 0.95,
+   "cough": 0.95,
+   "fatigue": 0.95,
+   "high fever": 0.95,
+   "malaise": 0.95,
+   "sweating": 0.95,
+   "phlegm": 0.95
+  },
+  "Hemorrhoids (Piles)": {
+   "bloody stool": 0.95,
+   "constipation": 0.95,
+   "irritation in anus": 0.95,
+   "pain during bowel movements": 0.95,
+   "pain in anal region": 0.95
+  },
+  "Heart Attack": {
+   "chest pain": 0.95,
+   "breathlessness": 0.9,
+   "sweating": 0.9,
+   "vomiting": 0.9
+  },
+  "Varicose Veins": {
+   "bruising": 0.95,
+   "cramps": 0.95,
+   "fatigue": 0.95,
+   "obesity": 0.95,
+   "prominent veins on calf": 0.95,
+   "swollen legs": 0.95,
+   "swollen blood vessels": 0.9
+  },
+  "Hypothyroidism": {
+   "abnormal menstruation": 1.0,
+   "brittle nails": 1.0,
+   "depression": 1.0,
+   "enlarged thyroid": 1.0,
+   "irritability": 1.0,
+   "swollen extremities": 1.0,
+   "cold hands and feet": 0.95,
+   "dizziness": 0.95,
+   "lethargy": 0.95,
+   "mood swings": 0.95,
+   "puffy face and eyes": 0.95,
+   "weight gain": 0.95,
+   "fatigue": 0.9
+  },
+  "Hyperthyroidism": {
+   "abnormal menstruation": 1.0,
+   "irritability": 1.0,
+   "muscle weakness": 1.0,
+   "diarrhea": 0.95,
+   "excessive hunger": 0.95,
+   "fast heart rate": 0.95,
+   "fatigue": 0.95,
+   "mood swings": 0.95,
+   "restlessness": 0.95,
+   "sweating": 0.95,
+   "weight loss": 0.95
+  },
+  "Hypoglycemia": {
+   "excessive hunger": 1.0,
+   "irritability": 1.0,
+   "palpitations": 1.0,
+   "slurred speech": 1.0,
+   "anxiety": 0.95,
+   "blurred and distorted vision": 0.95,
+   "fatigue": 0.95,
+   "headache": 0.95,
+   "nausea": 0.95,
+   "sweating": 0.95,
+   "vomiting": 0.95,
+   "drying and tingling lips": 0.95
+  },
+  "Osteoarthritis": {
+   "hip joint pain": 0.95,
+   "joint pain": 0.95,
+   "knee pain": 0.95,
+   "neck pain": 0.95,
+   "painful walking": 0.95,
+   "swelling joints": 0.95
+  },
+  "Arthritis": {
+   "movement stiffness": 0.95,
+   "muscle weakness": 0.95,
+   "painful walking": 0.95,
+   "stiff neck": 0.95,
+   "swelling joints": 0.95
+  },
+  "Paroxysmal Positional Vertigo": {
+   "headache": 0.95,
+   "loss of balance": 0.95,
+   "nausea": 0.95,
+   "unsteadiness": 0.95,
+   "vomiting": 0.95,
+   "spinning movements": 0.9
+  },
+  "Acne": {
+   "skin rash": 0.95,
+   "blackheads": 0.9,
+   "pus filled pimples": 0.9,
+   "scarring": 0.9
+  },
+  "Urinary Tract Infection": {
+   "bladder discomfort": 0.95,
+   "continuous feel of urine": 0.95,
+   "burning urination": 0.9,
+   "foul smell of urine": 0.85
+  },
+  "Psoriasis": {
+   "inflammatory nails": 0.95,
+   "joint pain": 0.95,
+   "silver like dusting": 0.95,
+   "skin peeling": 0.95,
+   "skin rash": 0.95,
+   "small dents in nails": 0.95
+  },
+  "Impetigo": {
+   "blister": 0.95,
+   "red sore around nose": 0.95,
+   "skin rash": 0.95,
+   "yellow crust ooze": 0.95,
+   "high fever": 0.85
+  }
+ },
+ "precautions": {
+  "Fungal Infection": [
+   "Bath twice",
+   "Use Dettol or neem in bathing water",
+   "Keep infected area dry",
+   "Use clean clothes"
+  ],
+  "GERD": [
+   "Avoid fatty spicy food",
+   "Avoid lying down after eating",
+   "Maintain healthy weight",
+   "Exercise"
+  ],
+  "Chronic Cholestasis": [
+   "Cold baths",
+   "Anti itch medicine",
+   "Consult doctor",
+   "Eat healthy"
+  ],
+  "Peptic Ulcer Disease": [
+   "Avoid fatty spicy food",
+   "Consume probiotic food",
+   "Eliminate milk",
+   "Limit alcohol"
+  ],
+  "AIDS": [
+   "Avoid open cuts",
+   "Wear PPE if possible",
+   "Consult doctor",
+   "Follow up"
+  ],
+  "Diabetes": [
+   "Have balanced diet",
+   "Exercise",
+   "Consult doctor",
+   "Follow up"
+  ],
+  "Gastroenteritis": [
+   "Stop eating solid food for a while",
+   "Try taking small sips of water",
+   "Rest",
+   "Ease back into eating"
+  ],
+  "Bronchial Asthma": [
+   "Switch to loose clothing",
+   "Take deep breaths",
+   "Get away from trigger",
+   "Seek help"
+  ],
+  "Hypertension": [
+   "Meditation",
+   "Salt baths",
+   "Reduce stress",
+   "Get proper sleep"
+  ],
+  "Migraine": [
+   "Meditation",
+   "Reduce stress",
+   "Use polarised glasses in sun",
+   "Consult doctor"
+  ],
+  "Cervical Spondylosis": [
+   "Use heating pad or cold pack",
+   "Exercise",
+   "Take OTC pain reliever",
+   "Consult doctor"
+  ],
+  "Paralysis (Brain Hemorrhage)": [
+   "Massage",
+   "Eat healthy",
+   "Exercise",
+   "Consult doctor"
+  ],
+  "Jaundice": [
+   "Drink plenty of water",
+   "Consume milk thistle",
+   "Eat fruits and high fibrous food",
+   "Medication"
+  ],
+  "Malaria": [
+   "Consult nearest hospital",
+   "Avoid oily food",
+   "Avoid non veg food",
+   "Keep mosquitoes out"
+  ],
+  "Chickenpox": [
+   "Use neem in bathing",
+   "Consume neem leaves",
+   "Take vaccine",
+   "Avoid public places"
+  ],
+  "Dengue": [
+   "Drink papaya leaf juice",
+   "Avoid fatty spicy food",
+   "Keep mosquitoes away",
+   "Keep hydrated"
+  ],
+  "Typhoid": [
+   "Eat high calorie vegetables",
+   "Antibiotic therapy",
+   "Consult doctor",
+   "Medication"
+  ],
+  "Hepatitis A": [
+   "Consult nearest hospital",
+   "Wash hands thoroughly",
+   "Avoid fatty spicy food",
+   "Medication"
+  ],
+  "Hepatitis B": [
+   "Consult nearest hospital",
+   "Vaccination",
+   "Eat healthy",
+   "Medication"
+  ],
+  "Hepatitis C": [
+   "Consult nearest hospital",
+   "Vaccination",
+   "Eat healthy",
+   "Medication"
+  ],
+  "Hepatitis D": [
+   "Consult doctor",
+   "Medication",
+   "Eat healthy",
+   "Follow up"
+  ],
+  "Hepatitis E": [
+   "Stop alcohol consumption",
+   "Rest",
+   "Consult doctor",
+   "Medication"
+  ],
+  "Alcoholic Hepatitis": [
+   "Stop alcohol consumption",
+   "Consult doctor",
+   "Medication",
+   "Follow up"
+  ],
+  "Tuberculosis": [
+   "Cover mouth",
+   "Consult doctor",
+   "Medication",
+   "Rest"
+  ],
+  "Common Cold": [
+   "Drink vitamin c rich drinks",
+   "Take vapour",
+   "Avoid cold food",
+   "Keep fever in check"
+  ],
+  "Pneumonia": [
+   "Consult doctor",
+   "Medication",
+   "Rest",
+   "Follow up"
+  ],
+  "Hemorrhoids (Piles)": [
+   "Avoid fatty spicy food",
+   "Consume witch hazel",
+   "Warm bath with epsom salt",
+   "Consume aloe vera juice"
+  ],
+  "Varicose Veins": [
+   "Lie down flat and raise the leg high",
+   "Use ointments",
+   "Use vein compression",
+   "Don't stand still for long"
+  ],
+  "Hypothyroidism": [
+   "Reduce stress",
+   "Exercise",
+   "Eat healthy",
+   "Get proper sleep"
+  ],
+  "Hyperthyroidism": [
+   "Eat healthy",
+   "Massage",
+   "Use lemon balm",
+   "Take radioactive iodine treatment"
+  ],
+  "Hypoglycemia": [
+   "Lie down on side",
+   "Check in pulse",
+   "Drink sugary drinks",
+   "Consult doctor"
+  ],
+  "Osteoarthritis": [
+   "Acetaminophen",
+   "Consult nearest hospital",
+   "Follow up",
+   "Salt baths"
+  ],
+  "Arthritis": [
+   "Exercise",
+   "Use hot and cold therapy",
+   "Try acupuncture",
+   "Massage"
+  ],
+  "Paroxysmal Positional Vertigo": [
+   "Lie down",
+   "Avoid sudden change in body",
+   "Avoid abrupt head movement",
+   "Relax"
+  ],
+  "Acne": [
+   "Bath twice",
+   "Avoid fatty spicy food",
+   "Drink plenty of water",
+   "Avoid too many products"
+  ],
+  "Urinary Tract Infection": [
+   "Drink plenty of water",
+   "Increase vitamin c intake",
+   "Drink cranberry juice",
+   "Take probiotics"
+  ],
+  "Psoriasis": [
+   "Wash hands with warm soapy water",
+   "Stop bleeding using pressure",
+   "Consult doctor",
+   "Salt baths"
+  ],
+  "Impetigo": [
+   "Soak affected area in warm water",
+   "Use antibiotics",
+   "Remove scabs with wet compressed cloth",
+   "Consult doctor"
+  ]
+ }
+}

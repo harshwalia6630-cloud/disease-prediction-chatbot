@@ -1,0 +1,20 @@
+{
+  "baseline": {
+    "test_accuracy": 0.9881,
+    "features": 23347,
+    "latency_ms_mean": 5.188,
+    "latency_ms_p50": 5.211,
+    "latency_ms_p95": 5.805,
+    "timed_calls": 1685
+  },
+  "deployed": {
+    "test_accuracy": 0.9881,
+    "features": 16031,
+    "latency_ms_mean": 1.888,
+    "latency_ms_p50": 1.811,
+    "latency_ms_p95": 2.455,
+    "timed_calls": 1685
+  },
+  "mean_latency_reduction_pct": 63.6,
+  "p95_latency_reduction_pct": 57.7
+}

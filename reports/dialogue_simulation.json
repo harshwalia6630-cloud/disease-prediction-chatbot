@@ -1,0 +1,54 @@
+{
+  "initial_symptoms_mentioned": 2,
+  "selected_confidence_threshold": 0.9,
+  "validation_sweep": {
+    "0.5": {
+      "dialogues": 205,
+      "avg_follow_up_questions": 0.12,
+      "top1_before_questions": 0.7756,
+      "top1_after_questions": 0.8,
+      "top3_before_questions": 0.9024,
+      "top3_after_questions": 0.9171
+    },
+    "0.6": {
+      "dialogues": 205,
+      "avg_follow_up_questions": 0.31,
+      "top1_before_questions": 0.7756,
+      "top1_after_questions": 0.8341,
+      "top3_before_questions": 0.9024,
+      "top3_after_questions": 0.9317
+    },
+    "0.7": {
+      "dialogues": 205,
+      "avg_follow_up_questions": 0.49,
+      "top1_before_questions": 0.7756,
+      "top1_after_questions": 0.8439,
+      "top3_before_questions": 0.9024,
+      "top3_after_questions": 0.9415
+    },
+    "0.8": {
+      "dialogues": 205,
+      "avg_follow_up_questions": 0.64,
+      "top1_before_questions": 0.7756,
+      "top1_after_questions": 0.8683,
+      "top3_before_questions": 0.9024,
+      "top3_after_questions": 0.9463
+    },
+    "0.9": {
+      "dialogues": 205,
+      "avg_follow_up_questions": 1.04,
+      "top1_before_questions": 0.7756,
+      "top1_after_questions": 0.8829,
+      "top3_before_questions": 0.9024,
+      "top3_after_questions": 0.961
+    }
+  },
+  "test": {
+    "dialogues": 205,
+    "avg_follow_up_questions": 1.25,
+    "top1_before_questions": 0.7171,
+    "top1_after_questions": 0.8585,
+    "top3_before_questions": 0.9073,
+    "top3_after_questions": 0.922
+  }
+}

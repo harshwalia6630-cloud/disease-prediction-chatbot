@@ -1,0 +1,51 @@
+{
+  "selected_model": "TF-IDF (word 1-2 + char 3-5) + calibrated LinearSVC (C=3.0)",
+  "n_classes": 41,
+  "n_classes_natural_test": 24,
+  "test": {
+    "accuracy": 0.9881,
+    "macro_f1": 0.9912,
+    "natural_accuracy": 0.9769,
+    "structured_accuracy": 1.0,
+    "lay_accuracy": 1.0
+  },
+  "test_rows": {
+    "natural": 173,
+    "structured": 82,
+    "lay": 82
+  },
+  "cv_natural_5fold": {
+    "mean": 0.9745,
+    "std": 0.0032,
+    "folds": [
+      0.9745,
+      0.9796,
+      0.9745,
+      0.9694,
+      0.9745
+    ]
+  },
+  "ablations_val": {
+    "full pipeline": {
+      "accuracy": 0.9792,
+      "macro_f1": 0.9852,
+      "natural_accuracy": 0.9595,
+      "structured_accuracy": 1.0,
+      "lay_accuracy": 1.0
+    },
+    "without symptom normalisation": {
+      "accuracy": 0.9644,
+      "macro_f1": 0.9631,
+      "natural_accuracy": 0.9595,
+      "structured_accuracy": 0.9878,
+      "lay_accuracy": 0.9512
+    },
+    "without char n-grams": {
+      "accuracy": 0.9763,
+      "macro_f1": 0.9832,
+      "natural_accuracy": 0.9538,
+      "structured_accuracy": 1.0,
+      "lay_accuracy": 1.0
+    }
+  }
+}

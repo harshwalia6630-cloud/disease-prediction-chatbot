@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Symptom Checker</title>
+<style>
+  :root {
+    --bg: #f5f6f8; --panel: #ffffff; --text: #1d2330; --muted: #667085; --border: #e3e6eb;
+    --accent: #2563eb; --accent-soft: #e8efff; --user: #2563eb; --user-text: #fff; --bot: #f1f3f6;
+    --warn-bg: #fff4e5; --warn-text: #8a4b00; --bar: #93b4f5;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0f1115; --panel: #171a21; --text: #e6e8ec; --muted: #9aa3b2; --border: #2a2f3a;
+      --accent: #6b9bff; --accent-soft: #1d2740; --user: #3b6fe0; --user-text: #fff; --bot: #222631;
+      --warn-bg: #3a2a12; --warn-text: #ffcf8a; --bar: #4a6fbf;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 15px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+         background: var(--bg); color: var(--text); height: 100dvh; display: flex; justify-content: center; }
+  .app { width: 100%; max-width: 760px; display: flex; flex-direction: column; height: 100dvh; padding: 0 16px; }
+  header { padding: 18px 0 10px; border-bottom: 1px solid var(--border); }
+  header h1 { margin: 0; font-size: 19px; }
+  header p { margin: 2px 0 0; color: var(--muted); font-size: 13px; }
+  #log { flex: 1; overflow-y: auto; padding: 18px 0; display: flex; flex-direction: column; gap: 12px; }
+  .msg { max-width: 85%; padding: 10px 14px; border-radius: 14px; white-space: pre-wrap; word-wrap: break-word; }
+  .user { align-self: flex-end; background: var(--user); color: var(--user-text); border-bottom-right-radius: 4px; }
+  .bot { align-self: flex-start; background: var(--bot); border-bottom-left-radius: 4px; }
+  .bot .warn { display: block; background: var(--warn-bg); color: var(--warn-text); padding: 8px 10px;
+               border-radius: 8px; margin-bottom: 6px; }
+  .preds { margin-top: 10px; display: grid; gap: 5px; width: min(360px, 66vw); }
+  .pred { display: grid; grid-template-columns: 120px 1fr 40px; gap: 8px; align-items: center; font-size: 13px; }
+  .track { height: 8px; background: var(--border); border-radius: 4px; overflow: hidden; }
+  .fill { height: 100%; background: var(--bar); border-radius: 4px; }
+  .pred span:last-child { text-align: right; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .tags { margin-top: 8px; display: flex; flex-wrap: wrap; gap: 5px; }
+  .tag { font-size: 12px; padding: 2px 8px; border-radius: 10px; background: var(--accent-soft); color: var(--accent); }
+  .tag.no { text-decoration: line-through; opacity: .7; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; padding-bottom: 8px; }
+  .chip { border: 1px solid var(--border); background: var(--panel); color: var(--text); border-radius: 16px;
+          padding: 5px 12px; font-size: 13px; cursor: pointer; }
+  .chip:hover { border-color: var(--accent); color: var(--accent); }
+  form { display: flex; gap: 8px; padding: 10px 0 18px; border-top: 1px solid var(--border); }
+  input { flex: 1; padding: 11px 14px; border-radius: 10px; border: 1px solid var(--border);
+          background: var(--panel); color: var(--text); font: inherit; }
+  input:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+  button.send { padding: 0 18px; border: 0; border-radius: 10px; background: var(--accent); color: #fff; font: inherit; cursor: pointer; }
+  button:disabled { opacity: .5; cursor: default; }
+  footer { color: var(--muted); font-size: 12px; padding-bottom: 10px; text-align: center; }
+</style>
+</head>
+<body>
+<div class="app">
+  <header>
+    <h1>Symptom Checker</h1>
+    <p>Describe your symptoms in your own words. The bot suggests possible conditions and asks follow-up questions.</p>
+  </header>
+  <div id="log" aria-live="polite"></div>
+  <div class="chips" id="chips"></div>
+  <form id="form">
+    <input id="input" autocomplete="off" placeholder="e.g. I've had a fever, chills and body aches for 3 days" aria-label="Message">
+    <button class="send" id="send">Send</button>
+  </form>
+  <footer>Educational project, not a medical diagnosis. Always consult a doctor.</footer>
+</div>
+<script>
+const log = document.getElementById("log"), form = document.getElementById("form"),
+      input = document.getElementById("input"), send = document.getElementById("send"),
+      chips = document.getElementById("chips");
+let sessionId = null;
+const starters = ["I have a skin rash and itching", "High fever with chills and sweating",
+                  "Burning when I pee and I always need to pee", "My head hurts and I feel dizzy"];
+
+function esc(s) { return s.replace(/[&<>]/g, c => ({"&": "&amp;", "<": "&lt;", ">": "&gt;"}[c])); }
+function md(s) { return esc(s).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>"); }
+
+function setChips(list) {
+  chips.innerHTML = "";
+  list.forEach(t => {
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "chip"; b.textContent = t;
+    b.onclick = () => submit(t, t === "Start over" ? "reset" : t);
+    chips.appendChild(b);
+  });
+}
+
+function addMessage(role, text, data) {
+  const div = document.createElement("div");
+  div.className = "msg " + role;
+  if (role === "user") { div.textContent = text; }
+  else {
+    const parts = text.split("\n\n").map(p => p.startsWith("⚠️") ? `<span class="warn">${md(p)}</span>` : md(p));
+    div.innerHTML = parts.join("\n\n");
+    if (data && data.predictions && data.predictions.length) {
+      const box = document.createElement("div"); box.className = "preds";
+      data.predictions.forEach(p => {
+        const pct = Math.round(p.probability * 100);
+        box.insertAdjacentHTML("beforeend",
+          `<div class="pred"><span>${esc(p.disease)}</span><div class="track"><div class="fill" style="width:${pct}%"></div></div><span>${pct}%</span></div>`);
+      });
+      div.appendChild(box);
+    }
+    if (data && (data.symptoms_confirmed.length || data.symptoms_denied.length)) {
+      const tags = document.createElement("div"); tags.className = "tags";
+      data.symptoms_confirmed.forEach(s => tags.insertAdjacentHTML("beforeend", `<span class="tag">${esc(s)}</span>`));
+      data.symptoms_denied.forEach(s => tags.insertAdjacentHTML("beforeend", `<span class="tag no" title="denied">${esc(s)}</span>`));
+      div.appendChild(tags);
+    }
+  }
+  log.appendChild(div);
+  log.scrollTop = log.scrollHeight;
+}
+
+async function submit(text, payload = text) {
+  text = text.trim();
+  if (!text) return;
+  addMessage("user", text);
+  input.value = ""; send.disabled = true; setChips([]);
+  try {
+    const res = await fetch("/api/chat", {method: "POST", headers: {"Content-Type": "application/json"},
+                                         body: JSON.stringify({message: payload, session_id: sessionId})});
+    const data = await res.json();
+    sessionId = data.session_id;
+    addMessage("bot", data.reply, data);
+    setChips(data.follow_up ? ["Yes", "No"] : data.final ? ["Start over"] : []);
+  } catch (e) {
+    addMessage("bot", "Sorry, something went wrong reaching the server.");
+  } finally { send.disabled = false; input.focus(); }
+}
+
+form.addEventListener("submit", e => { e.preventDefault(); submit(input.value); });
+addMessage("bot", "Hi! Tell me what symptoms you're experiencing and I'll suggest what they might indicate.");
+setChips(starters);
+</script>
+</body>
+</html>

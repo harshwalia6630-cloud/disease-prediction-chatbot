@@ -1,0 +1,8 @@
+model,accuracy,macro_f1,natural_accuracy,structured_accuracy,lay_accuracy,fit_seconds
+LinearSVC (C=3.0),0.9792,0.9852,0.9595,1.0,1.0,1.45
+Logistic Regression,0.9763,0.9833,0.9538,1.0,1.0,3.5
+LinearSVC (C=1.0),0.9703,0.9788,0.9422,1.0,1.0,1.41
+LinearSVC (C=0.3),0.9644,0.9743,0.9306,1.0,1.0,1.35
+"k-NN (k=5, cosine)",0.9377,0.9484,0.8786,1.0,1.0,0.65
+Random Forest (300 trees),0.9318,0.9264,0.9133,0.9512,0.9512,1.56
+Complement Naive Bayes,0.9169,0.9094,0.8613,0.9756,0.9756,0.71

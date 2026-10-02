@@ -1,0 +1,47 @@
+                               precision    recall  f1-score   support
+
+                         AIDS      1.000     1.000     1.000         4
+                         Acne      1.000     1.000     1.000        11
+          Alcoholic Hepatitis      1.000     1.000     1.000         4
+                      Allergy      0.909     0.909     0.909        11
+                    Arthritis      1.000     1.000     1.000        11
+             Bronchial Asthma      1.000     1.000     1.000        11
+         Cervical Spondylosis      1.000     1.000     1.000        12
+                   Chickenpox      1.000     1.000     1.000        11
+          Chronic Cholestasis      1.000     1.000     1.000         4
+                  Common Cold      0.923     1.000     0.960        12
+                       Dengue      0.909     0.909     0.909        11
+                     Diabetes      1.000     1.000     1.000        12
+                Drug Reaction      1.000     1.000     1.000        12
+             Fungal Infection      1.000     1.000     1.000        11
+                         GERD      1.000     0.909     0.952        11
+              Gastroenteritis      1.000     1.000     1.000         4
+                 Heart Attack      1.000     1.000     1.000         4
+          Hemorrhoids (Piles)      1.000     1.000     1.000        10
+                  Hepatitis A      1.000     1.000     1.000         4
+                  Hepatitis B      1.000     1.000     1.000         4
+                  Hepatitis C      1.000     1.000     1.000         4
+                  Hepatitis D      1.000     1.000     1.000         4
+                  Hepatitis E      1.000     1.000     1.000         4
+                 Hypertension      1.000     1.000     1.000        12
+              Hyperthyroidism      1.000     1.000     1.000         4
+                 Hypoglycemia      1.000     1.000     1.000         4
+               Hypothyroidism      1.000     1.000     1.000         4
+                     Impetigo      1.000     1.000     1.000        12
+                     Jaundice      1.000     1.000     1.000         9
+                      Malaria      1.000     1.000     1.000        11
+                     Migraine      1.000     1.000     1.000        11
+               Osteoarthritis      1.000     1.000     1.000         4
+ Paralysis (Brain Hemorrhage)      1.000     1.000     1.000         4
+Paroxysmal Positional Vertigo      1.000     1.000     1.000         4
+         Peptic Ulcer Disease      1.000     1.000     1.000        11
+                    Pneumonia      1.000     1.000     1.000        11
+                    Psoriasis      1.000     1.000     1.000        12
+                 Tuberculosis      1.000     1.000     1.000         4
+                      Typhoid      0.909     0.909     0.909        11
+      Urinary Tract Infection      1.000     1.000     1.000        11
+               Varicose Veins      1.000     1.000     1.000        12
+
+                     accuracy                          0.988       337
+                    macro avg      0.991     0.991     0.991       337
+                 weighted avg      0.988     0.988     0.988       337
