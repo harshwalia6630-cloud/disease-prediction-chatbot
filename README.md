@@ -1,6 +1,8 @@
 # Disease Prediction Chatbot
 
-An NLP chatbot that predicts likely diseases from symptoms described in plain English. **[Live demo →](#website-vercel)** runs entirely in your browser. It normalises everyday phrases ("throwing up", "tummy ache", "can't breathe") to medical symptom terms, classifies the text with TF-IDF and a calibrated LinearSVC, and asks follow-up questions when it is unsure. It runs as a FastAPI service with a web chat UI and ships with a Dockerfile.
+An NLP chatbot that predicts likely diseases from symptoms described in plain English. 
+
+**Live demo: [harsh-symptom-checker.vercel.app](https://harsh-symptom-checker.vercel.app)**. The model runs entirely in your browser. It normalises everyday phrases ("throwing up", "tummy ache", "can't breathe") to medical symptom terms, classifies the text with TF-IDF and a calibrated LinearSVC, and asks follow-up questions when it is unsure. It runs as a FastAPI service with a web chat UI and ships with a Dockerfile.
 
 **Tech stack:** Python · scikit-learn · NLTK · FastAPI · Docker
 
